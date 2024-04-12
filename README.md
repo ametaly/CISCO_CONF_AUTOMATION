@@ -51,7 +51,9 @@ Le script nécessite les port sur lesquels sont connectés les routeurs en local
 Voici une brève description de la configuration d'un réseau MPLS VPN comprenant 14 routeurs, avec des fonctionnalités spécifiques pour différents clients et des points d'accès multiples.
 
 ## Caractéristiques du réseau :
-Nombre de routeurs : 14 dont 6 clients, 4 PE et 4 P
+Nombre de routeurs : 14 dont 6 clients, 4 PE et 4 P dont 2 RR.
+
+Protocoles : OSPF et MPLS sont mis en place dans le backbone. IBGP est utilisé entre les PE et les RR. EBGP et VPN utilisé entre les PE et les clients.
 
 Clients :
 Le réseau prend en charge quatre clients différents, identifiés comme C, D, CE1, et CE2.
