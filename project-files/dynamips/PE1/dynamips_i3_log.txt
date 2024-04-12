@@ -1,0 +1,52 @@
+Mar 25 15:37:46.691 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Mar 25 15:37:46.691 HYPERVISOR: Started on IP = localhost, TCP port = 63754.
+Mar 25 15:37:47.173 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 25 15:37:47.175 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\TCBZ4763\GNS3\projects\NAS1\project-files\dynamips 
+Mar 25 15:37:47.175 GENERAL: working_dir=C:\Users\TCBZ4763\GNS3\projects\NAS1\project-files\dynamips
+Mar 25 15:37:47.175 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\TCBZ4763\GNS3\projects\NAS1\project-files\dynamips\c2a2e332-dfaf-441b-b296-89043cd7cdbd 
+Mar 25 15:37:47.197 GENERAL: working_dir=C:\Users\TCBZ4763\GNS3\projects\NAS1\project-files\dynamips\c2a2e332-dfaf-441b-b296-89043cd7cdbd
+Mar 25 15:37:47.197 HYPERVISOR: exec_cmd: vm create PE2 7 c7200 
+Mar 25 15:37:47.203 VM: VM PE2 created.
+Mar 25 15:37:47.203 HYPERVISOR: exec_cmd: vm set_con_tcp_port PE2 5006 
+Mar 25 15:37:47.203 HYPERVISOR: exec_cmd: c7200 get_mac_addr PE2 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm slot_add_binding PE2 0 0 C7200-IO-FE 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm set_disk0 PE2 0 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm set_exec_area PE2 64 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm set_ios PE2 C:/Users/TCBZ4763/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm set_nvram PE2 512 
+Mar 25 15:37:47.205 HYPERVISOR: exec_cmd: vm set_ram PE2 512 
+Mar 25 15:37:47.213 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:47.213 HYPERVISOR: exec_cmd: vm slot_add_binding PE2 1 0 PA-GE 
+Mar 25 15:37:47.213 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:47.213 HYPERVISOR: exec_cmd: vm slot_add_binding PE2 2 0 PA-GE 
+Mar 25 15:37:47.215 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:47.215 HYPERVISOR: exec_cmd: vm slot_add_binding PE2 3 0 PA-GE 
+Mar 25 15:37:50.388 HYPERVISOR: exec_cmd: nio create_udp udp-197c5c2c-a059-4b73-b74b-43a844e91dc5 10002 127.0.0.1 10003 
+Mar 25 15:37:52.678 HYPERVISOR: exec_cmd: vm slot_add_nio_binding PE2 1 0 udp-197c5c2c-a059-4b73-b74b-43a844e91dc5 
+Mar 25 15:37:52.678 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:53.048 HYPERVISOR: exec_cmd: nio create_udp udp-9966c14a-5afc-4fda-805b-55ad8c6725d6 10008 127.0.0.1 10009 
+Mar 25 15:37:53.048 HYPERVISOR: exec_cmd: vm slot_add_nio_binding PE2 3 0 udp-9966c14a-5afc-4fda-805b-55ad8c6725d6 
+Mar 25 15:37:53.048 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:37:54.028 HYPERVISOR: exec_cmd: nio create_udp udp-6e5b6c83-e4bc-4405-9876-7580572e84c8 10022 127.0.0.1 10023 
+Mar 25 15:37:54.028 HYPERVISOR: exec_cmd: vm slot_add_nio_binding PE2 2 0 udp-6e5b6c83-e4bc-4405-9876-7580572e84c8 
+Mar 25 15:37:54.028 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:38:09.373 HYPERVISOR: exec_cmd: vm set_ghost_status PE2 2 
+Mar 25 15:38:09.389 HYPERVISOR: exec_cmd: vm set_ghost_file PE2 C:\Users\TCBZ4763\GNS3\projects\NAS1\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Mar 25 15:38:09.389 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 15:38:09.420 HYPERVISOR: exec_cmd: vm set_config PE2 configs\i7_startup-config.cfg configs\i7_private-config.cfg 
+Mar 25 15:38:09.420 HYPERVISOR: exec_cmd: vm start PE2 
+Mar 25 16:57:11.198 HYPERVISOR: exec_cmd: vm extract_config PE2 
+Mar 25 17:49:12.098 HYPERVISOR: exec_cmd: vm extract_config PE2 
+Mar 25 17:56:42.200 HYPERVISOR: exec_cmd: vm extract_config PE2 
+Mar 25 18:01:18.927 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 18:01:18.928 HYPERVISOR: exec_cmd: vm stop PE2 
+Mar 25 18:01:19.077 VM: VM PE2 shutdown.
+Mar 25 18:01:19.078 HYPERVISOR: exec_cmd: vm extract_config PE2 
+Mar 25 18:01:19.473 HYPERVISOR: exec_cmd: vm get_status PE2 
+Mar 25 18:01:19.473 HYPERVISOR: exec_cmd: vm extract_config PE2 
+Mar 25 18:01:19.476 HYPERVISOR: exec_cmd: vm delete PE2 
+Mar 25 18:01:19.476 VM: VM PE2 destroyed.
+Mar 25 18:01:19.477 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 25 18:01:19.804 HYPERVISOR: Stopped.
+Mar 25 18:01:19.804 GENERAL: reset done.

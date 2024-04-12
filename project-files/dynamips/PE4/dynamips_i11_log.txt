@@ -1,0 +1,64 @@
+Mar 25 18:58:26.703 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+Mar 25 18:58:26.704 HYPERVISOR: Started on IP = localhost, TCP port = 51138.
+Mar 25 18:58:27.174 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 25 18:58:27.175 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\mikai\GNS3\projects\momo\project-files\dynamips 
+Mar 25 18:58:27.175 GENERAL: working_dir=C:\Users\mikai\GNS3\projects\momo\project-files\dynamips
+Mar 25 18:58:27.176 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\mikai\GNS3\projects\momo\project-files\dynamips\f69d4198-5a78-4945-b867-2e4f568255cd 
+Mar 25 18:58:27.176 GENERAL: working_dir=C:\Users\mikai\GNS3\projects\momo\project-files\dynamips\f69d4198-5a78-4945-b867-2e4f568255cd
+Mar 25 18:58:27.176 HYPERVISOR: exec_cmd: vm create R1 11 c7200 
+Mar 25 18:58:27.178 VM: VM R1 created.
+Mar 25 18:58:27.179 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5010 
+Mar 25 18:58:27.179 HYPERVISOR: exec_cmd: c7200 get_mac_addr R1 
+Mar 25 18:58:27.179 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:58:27.179 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-FE 
+Mar 25 18:58:27.180 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 18:58:27.181 HYPERVISOR: exec_cmd: vm set_exec_area R1 64 
+Mar 25 18:58:27.181 HYPERVISOR: exec_cmd: vm set_ram R1 512 
+Mar 25 18:58:27.181 HYPERVISOR: exec_cmd: vm set_nvram R1 512 
+Mar 25 18:58:27.182 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+Mar 25 18:58:27.182 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:58:27.182 HYPERVISOR: exec_cmd: vm slot_add_binding R1 1 0 PA-GE 
+Mar 25 18:58:27.183 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:58:27.183 HYPERVISOR: exec_cmd: vm slot_add_binding R1 2 0 PA-GE 
+Mar 25 18:58:27.183 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:58:27.184 HYPERVISOR: exec_cmd: vm slot_add_binding R1 3 0 PA-GE 
+Mar 25 18:58:27.258 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 18:58:29.556 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 18:58:40.091 HYPERVISOR: exec_cmd: nio create_udp udp-c36d8654-67ba-4d0d-85ae-62006457bbae 20070 127.0.0.1 20071 
+Mar 25 18:58:40.920 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 1 0 udp-c36d8654-67ba-4d0d-85ae-62006457bbae 
+Mar 25 18:58:40.921 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:58:56.704 HYPERVISOR: exec_cmd: nio create_udp udp-38454bac-feba-47ee-a676-db125f5c7665 20082 127.0.0.1 20083 
+Mar 25 18:58:56.707 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 2 0 udp-38454bac-feba-47ee-a676-db125f5c7665 
+Mar 25 18:58:56.707 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:59:02.233 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 18:59:13.943 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:59:13.944 HYPERVISOR: exec_cmd: vm extract_config R1 
+Mar 25 18:59:19.082 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+Mar 25 18:59:19.083 HYPERVISOR: exec_cmd: vm set_ghost_file R1 C:\Users\mikai\GNS3\projects\momo\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Mar 25 18:59:19.084 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 18:59:19.091 HYPERVISOR: exec_cmd: vm set_config R1 configs\i11_startup-config.cfg 
+Mar 25 18:59:19.091 HYPERVISOR: exec_cmd: vm start R1 
+Mar 25 18:59:49.405 HYPERVISOR: exec_cmd: vm extract_config R1 
+Mar 25 19:16:55.927 HYPERVISOR: exec_cmd: vm get_status R1 
+Mar 25 19:16:55.927 HYPERVISOR: exec_cmd: vm stop R1 
+Mar 25 19:16:56.100 VM: VM R1 shutdown.
+Mar 25 19:16:56.101 HYPERVISOR: exec_cmd: vm extract_config R1 
+Mar 25 19:17:00.944 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 19:17:00.945 HYPERVISOR: exec_cmd: vm rename R1 PE4 
+Mar 25 19:17:01.007 HYPERVISOR: exec_cmd: vm set_ios PE4 C:/Users/mikai/GNS3/images/IOS/c7200-advipservicesk9-mz.152-4.S5.image 
+Mar 25 19:17:11.813 HYPERVISOR: exec_cmd: vm set_ghost_status PE4 2 
+Mar 25 19:17:11.814 HYPERVISOR: exec_cmd: vm set_ghost_file PE4 C:\Users\mikai\GNS3\projects\momo\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Mar 25 19:17:11.814 HYPERVISOR: exec_cmd: vm get_status PE4 
+Mar 25 19:17:11.833 HYPERVISOR: exec_cmd: vm set_config PE4 configs\i11_startup-config.cfg configs\i11_private-config.cfg 
+Mar 25 19:17:11.833 HYPERVISOR: exec_cmd: vm start PE4 
+Mar 25 19:19:19.497 HYPERVISOR: exec_cmd: vm get_status PE4 
+Mar 25 19:19:19.497 HYPERVISOR: exec_cmd: vm stop PE4 
+Mar 25 19:19:19.658 VM: VM PE4 shutdown.
+Mar 25 19:19:19.661 HYPERVISOR: exec_cmd: vm extract_config PE4 
+Mar 25 19:19:25.591 HYPERVISOR: exec_cmd: vm set_ghost_status PE4 2 
+Mar 25 19:19:25.591 HYPERVISOR: exec_cmd: vm set_ghost_file PE4 C:\Users\mikai\GNS3\projects\momo\project-files\dynamips\c7200-advipservicesk9-mz.152-4.S5.image-512.ghost 
+Mar 25 19:19:25.592 HYPERVISOR: exec_cmd: vm get_status PE4 
+Mar 25 19:19:25.611 HYPERVISOR: exec_cmd: vm set_config PE4 configs\i11_startup-config.cfg configs\i11_private-config.cfg 
+Mar 25 19:19:25.611 HYPERVISOR: exec_cmd: vm start PE4 
+Mar 25 19:39:27.265 HYPERVISOR: exec_cmd: vm extract_config PE4 
+Mar 25 19:52:57.814 HYPERVISOR: exec_cmd: vm extract_config PE4 
