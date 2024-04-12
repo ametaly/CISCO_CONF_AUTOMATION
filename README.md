@@ -19,7 +19,7 @@ Ensuite un code python lit ce fichier intention et produit en conséquence un fi
 
 ## Architecture du réseau
 
-![alt text](image.png)
+![alt text](archi.png)
 
 ## Guide de démarrage rapide
 ### Configuration GN3
