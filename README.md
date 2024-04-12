@@ -56,13 +56,13 @@ Nombre de routeurs : 14 dont 6 clients, 4 PE et 4 P
 Clients :
 Le réseau prend en charge quatre clients différents, identifiés comme C, D, CE1, et CE2.
 
-## Connexions client-routeur :
-CE1 et CEN1 : CE1 est connecté à CEN1.
-CE2 et CEN2 : CE2 est connecté à CEN2.*
+## Connexions interne client :
+CE1 : CE1 est connecté à CEN1.
+CE2 : CE2 est connecté à CEN2.
 
 ## Communication entre clients :
 C et D : C et D peuvent communiquer entre eux.
-C et CE1/CE2 : C peut communiquer avec CE1 et CE2.
+C et CEN1/CEN2 : C peut communiquer avec CEN1 et CEN2.
 D et CE1/CE2 : D peut communiquer avec CE1 et CE2.
 
 ## Fonctionnalités supplémentaires :
