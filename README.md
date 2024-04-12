@@ -23,7 +23,7 @@ Ensuite un code python lit ce fichier intention et produit en conséquence un fi
 
 ## Guide de démarrage rapide
 ### Configuration GN3
-En faisant un pull du projet, vous aurez en local entre autres le fichier GNS3 **fin.gns3** et le répertoire qui contient les configs
+En faisant un pull du projet, vous aurez en local entre autres le fichier GNS3 **GNS3_ARCHI.gns3** et le répertoire qui contient les configs
 des routeurs **project-files**.
 
 Il suffit juste (en ayant GNS3 bien configuré sur votre machine en local avec la bonne image de routeur), de lancer le fichier **fin.gnS3**.d
@@ -35,7 +35,7 @@ Les fichiers de configuration seront sauvegardés dans le répertoire dev/config
 
 ### Déploiement des Configurations avec telnet
 
-Utiliser le script Python **telnet_deployment.py** pour déployer les configurations sur chaque routeur.
+Utiliser le script Python **deploy_telnet.py** pour déployer les configurations sur chaque routeur.
 Ce script se connectera à chaque routeur via Telnet et enverra les commandes de configuration.
 Le script nécessite les port sur lesquels sont connectés les routeurs en local: 
     - il faut donc consulter les numéros de port des routeur au niveau de l'UI de GNS3 (à gauche souvent): penser à bien démarrer tous les routeurs!
