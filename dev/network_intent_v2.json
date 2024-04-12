@@ -1,0 +1,779 @@
+{
+  "routers": [
+    {
+      "name": "PE1",
+      "router_id": "1.1.1.1",
+      "interfaces": [
+        {
+          "name": "FastEthernet0/0",
+          "ip_address": "192.168.1.17",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P4",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "192.168.1.1",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P1",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet2/0",
+          "ip_address": "111.20.31.2",
+          "subnet_mask": "255.255.255.0",
+          "description": "Link to CE1",
+          "vrf": "client_A"
+        },
+        {
+          "name": "GigabitEthernet3/0",
+          "ip_address": "111.20.32.2",
+          "subnet_mask": "255.255.255.0",
+          "description": "Link to CE2",
+          "vrf": "client_B"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "1.1.1.1",
+          "subnet_mask": "255.255.255.255",
+          "description": "PE1 Loopback Interface"
+        }
+      ],
+      "bgp": {
+        "local_as": 111,
+        "bgp_id": "1.1.1.1",
+        "ipv4": false,
+        "neighbors": [
+          {
+            "name": "PE2",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": [
+              "vpnv4"
+            ]
+          },
+          {
+            "name": "CE1",
+            "interface": "GigabitEthernet1/0",
+            "address_family": [
+              "ipv4 vrf"
+            ],
+            "vrf": "client_A"
+          },
+          {
+            "name": "P4",
+            "interface": "Loopback0",
+            "update_source": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          },
+          {
+            "name": "CE2",
+            "interface": "GigabitEthernet1/0",
+            "address_family": [
+              "ipv4 vrf"
+            ],
+            "vrf": "client_B"
+          }
+        ]
+      },
+      "vrf": [
+        {
+          "nom_vrf": "client_A",
+          "route_distinguisher_client": 10,
+          "route_target import": ["111:1000","111:4000"],
+          "route_target export": ["111:1000","111:1040"]
+        },
+        {
+          "nom_vrf": "client_B",
+          "route_distinguisher_client": 20,
+          "route_target import": ["111:2000","111:4000"],
+          "route_target export": ["111:2000","111:2040"]
+        }
+      ]
+    },
+    {
+      "name": "PE2",
+      "router_id": "2.2.2.2",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.33.2",
+          "subnet_mask": "255.255.255.0",
+          "vrf": "client_A",
+          "description": "Link to CEN1"
+        },
+        {
+          "name": "FastEthernet0/0",
+          "ip_address": "192.168.1.13",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P3",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet2/0",
+          "ip_address": "192.168.1.13",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P2",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet3/0",
+          "ip_address": "111.20.34.2",
+          "subnet_mask": "255.255.255.0",
+          "vrf": "client_B",
+          "description": "Link to CEN2"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "2.2.2.2",
+          "subnet_mask": "255.255.255.255",
+          "description": "PE2 Loopback Interface"
+        }
+      ],
+      "vrf": [
+        {
+          "nom_vrf": "client_A",
+          "route_distinguisher_client": 30,
+          "route_target import": ["111:1000","111:3000"],
+          "route_target export": ["111:1000","111:1030"]
+        },
+        {
+          "nom_vrf": "client_B",
+          "route_distinguisher_client": 40,
+          "route_target import": ["111:2000","111:3000"],
+          "route_target export": ["111:2000","111:2030"]
+        }
+      ],
+      "bgp": {
+        "local_as": 111,
+        "bgp_id": "2.2.2.2",
+        "ipv4": false,
+        "neighbors": [
+          {
+            "name": "PE1",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": [
+              "vpnv4"
+            ]
+          },
+          {
+            "name": "P3",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector": true
+          },
+          {
+            "name": "CEN1",
+            "interface": "GigabitEthernet1/0",
+            "address_family": [
+              "ipv4 vrf"
+            ],
+            "vrf": "client_A"
+          },
+          {
+            "name": "CEN2",
+            "interface": "GigabitEthernet1/0",
+            "address_family": [
+              "ipv4 vrf"
+            ],
+            "vrf": "client_B"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PE3",
+      "router_id": "3.3.3.3",
+      "ipv4": false,
+      "interfaces": [
+        {
+          "name": "GigabitEthernet2/0",
+          "ip_address": "111.20.35.2",
+          "subnet_mask": "255.255.255.0",
+          "vrf": "client_C",
+          "description": "Link to C"
+        },
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "192.168.1.22",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P4",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "3.3.3.3",
+          "subnet_mask": "255.255.255.255",
+          "description": "PE3 Loopback Interface"
+        }
+      ],
+      "vrf": [
+          {
+              "nom_vrf": "client_C",
+              "route_distinguisher_client": 103,
+              "route_target import": ["111:4000","111:1030","111:2030"],
+              "route_target export": ["111:3000"]
+          }
+      ],
+      "bgp": {
+        "local_as": 111,
+        "bgp_id": "3.3.3.3",
+        "neighbors": [
+          {
+            "name": "P3",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector": true
+
+
+          },
+          {
+              "name": "C",
+              "interface": "GigabitEthernet1/0",
+              "address_family": ["ipv4 vrf"],
+              "vrf": "client_C"
+          }
+
+        ]
+      }
+    },
+    
+{
+  "name": "PE4",
+  "router_id": "4.4.4.4",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet2/0",
+      "ip_address": "111.20.36.2",
+      "subnet_mask": "255.255.255.0",
+      "vrf": "client_D",
+      "description": "Link to D"
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "ip_address": "192.168.1.30",
+      "subnet_mask": "255.255.255.252",
+      "description": "Link to P4",
+      "ospf": {
+        "process_id": 1,
+        "area": 0
+      },
+      "mpls": true
+    },
+    {
+      "name": "Loopback0",
+      "ip_address": "4.4.4.4",
+      "subnet_mask": "255.255.255.255",
+      "description": "PE4 Loopback Interface"
+    }
+  ],
+  "vrf": [
+      {
+          "nom_vrf": "client_D",
+          "route_distinguisher_client": 104,
+          "route_target import": ["111:3000","111:1040","111:2040"],
+          "route_target export": ["111:4000"]
+      }
+  ],
+  "bgp": {
+    "local_as": 111,
+    "bgp_id": "4.4.4.4",
+    "ipv4": false,
+    "neighbors": [
+    
+      {
+        "name": "P4",
+        "update_source": "Loopback0",
+        "interface": "Loopback0",
+        "address_family": ["vpnv4"],
+        "route_reflector": true
+
+
+      },
+      {
+          "name": "D",
+          "interface": "GigabitEthernet1/0",
+          "address_family": ["ipv4 vrf"],
+          "vrf": "client_D"
+      }
+
+    ]
+  }
+},
+    {
+      "name": "P1",
+      "router_id": "1.1.0.1",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet2/0",
+          "ip_address": "192.168.1.2",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to PE1",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "192.168.1.9",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P2",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet3/0",
+          "ip_address": "192.168.40.1",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P4",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "1.1.0.1",
+          "subnet_mask": "255.255.255.255",
+          "description": "P1 Loopback Interface"
+        }
+      ]
+    },
+    {
+      "name": "P2",
+      "router_id": "2.2.0.2",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet2/0",
+          "ip_address": "192.168.1.10",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P1",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "192.168.1.14",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to PE2",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "GigabitEthernet3/0",
+          "ip_address": "192.168.41.1",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P3",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "2.2.0.2",
+          "subnet_mask": "255.255.255.255",
+          "description": "P2 Loopback Interface"
+        }
+      ]
+    },
+    {
+      "name": "P3",
+      "router_id": "1.3.1.1",
+      "interfaces": [
+	{
+              "name": "FastEthernet0/0",
+              "ip_address": "192.168.1.14",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to PE2",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+          {
+              "name": "GigabitEthernet2/0",
+              "ip_address": "192.168.1.21",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to PE3",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+          {
+              "name": "GigabitEthernet1/0",
+              "ip_address": "192.168.1.25",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to P3",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+	{
+          "name": "GigabitEthernet3/0",
+          "ip_address": "192.168.41.2",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P2",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+          {
+              "name": "Loopback0",
+              "ip_address": "1.3.1.1",
+              "subnet_mask": "255.255.255.255",
+              "description": "P3 Loopback Interface"
+          }
+      ],
+      "bgp": {
+        "local_as": 111,
+        "bgp_id": "1.3.1.1",
+        "ipv4": false,
+        "neighbors": [
+          {
+            "name": "PE3",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          },
+          {
+            "name": "PE2",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          },
+          {
+            "name": "P4",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          }
+
+        ]
+      }
+    },
+    {
+      "name": "P4",
+      "router_id": "1.4.1.1",
+      "interfaces": [
+	{
+              "name": "FastEthernet0/0",
+              "ip_address": "192.168.1.18",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to PE1",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+          
+          {
+              "name": "GigabitEthernet1/0",
+              "ip_address": "192.168.1.26",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to P4",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+	{
+              "name": "GigabitEthernet2/0",
+              "ip_address": "192.168.1.29",
+              "subnet_mask": "255.255.255.252",
+              "description": "Link to PE4",
+              "ospf": {
+                  "process_id": 1,
+                  "area": 0
+              },
+              "mpls": true
+          },
+	{
+          "name": "GigabitEthernet3/0",
+          "ip_address": "192.168.40.2",
+          "subnet_mask": "255.255.255.252",
+          "description": "Link to P1",
+          "ospf": {
+            "process_id": 1,
+            "area": 0
+          },
+          "mpls": true
+        },
+          {
+              "name": "Loopback0",
+              "ip_address": "1.4.1.1",
+              "subnet_mask": "255.255.255.255",
+              "description": "P4 Loopback Interface"
+          }
+      ],
+      "bgp": {
+        "local_as": 111,
+        "bgp_id": "1.4.1.1",
+        "ipv4": false,
+        "neighbors": [
+          {
+            "name": "PE4",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          },
+          {
+            "name": "PE1",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          },
+          {
+            "name": "P3",
+            "update_source": "Loopback0",
+            "interface": "Loopback0",
+            "address_family": ["vpnv4"],
+            "route_reflector" : true
+          }
+
+        ]
+      }
+    },
+    {
+      "name": "CE1",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.31.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "2.1.1.1",
+          "subnet_mask": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 110,
+        "bgp_id": "2.1.1.1",
+        "ipv4":true,
+        "neighbors": [
+          {
+            "name": "PE1",
+            "interface": "GigabitEthernet2/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.31.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    
+    {
+      "name": "CE2",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.32.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "2.2.1.1",
+          "subnet_mask": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 112,
+        "bgp_id": "2.2.1.1",
+        "ipv4":true,
+        "neighbors": [
+          {
+            "name": "PE1",
+            "interface": "GigabitEthernet3/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.32.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "CEN1",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.33.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 109,
+        "bgp_id": "3.1.1.1",
+        "ipv4":true,
+        "neighbors": [
+          {
+            "name": "PE2",
+            "interface": "GigabitEthernet1/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.33.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "CEN2",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.34.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "3.2.1.1",
+          "subnet_mask": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 113,
+        "bgp_id": "3.2.1.1",
+        "ipv4":true,
+        "neighbors": [
+          {
+            "name": "PE2",
+            "interface": "GigabitEthernet3/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.34.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "C",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.35.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 103,
+        "bgp_id": "3.3.3.1",
+        "ipv4":true,
+        "neighbors": [
+          {
+            "name": "PE3",
+            "interface": "GigabitEthernet2/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.35.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "D",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet1/0",
+          "ip_address": "111.20.36.1",
+          "subnet_mask": "255.255.255.0"
+        },
+        {
+          "name": "Loopback0",
+          "ip_address": "255.255.255.255"
+        }
+      ],
+      "bgp": {
+        "local_as": 104,
+        "bgp_id": "4.4.4.1",
+        "ipv4": true,
+        "neighbors": [
+          {
+            "name": "PE4",
+            "interface": "GigabitEthernet2/0",
+            "advertised_networks": [
+              {
+                "network": "111.20.36.0",
+                "mask": "255.255.255.0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
