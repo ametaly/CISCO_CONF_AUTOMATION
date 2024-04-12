@@ -46,7 +46,6 @@ Le script nécessite les port sur lesquels sont connectés les routeurs en local
                                                         ...
                                                         }
 
-### Features
 
 ## Description du réseau MPLS VPN
 Ce fichier décrit la configuration d'un réseau MPLS VPN comprenant 14 routeurs, avec des fonctionnalités spécifiques pour différents clients et des points d'accès multiples.
