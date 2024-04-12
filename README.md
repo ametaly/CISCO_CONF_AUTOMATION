@@ -58,11 +58,14 @@ Le réseau prend en charge quatre clients différents, identifiés comme C, D, C
 
 ## Connexions interne client :
 CE1 : CE1 est connecté à CEN1.
+
 CE2 : CE2 est connecté à CEN2.
 
 ## Communication entre clients :
 C et D : C et D peuvent communiquer entre eux.
+
 C et CEN1/CEN2 : C peut communiquer avec CEN1 et CEN2.
+
 D et CE1/CE2 : D peut communiquer avec CE1 et CE2.
 
 ## Fonctionnalités supplémentaires :
