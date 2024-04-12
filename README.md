@@ -46,6 +46,29 @@ Le script nécessite les port sur lesquels sont connectés les routeurs en local
                                                         ...
                                                         }
 
+### Features
+
+## Description du réseau MPLS VPN
+Ce fichier décrit la configuration d'un réseau MPLS VPN comprenant 14 routeurs, avec des fonctionnalités spécifiques pour différents clients et des points d'accès multiples.
+
+# Caractéristiques du réseau :
+Nombre de routeurs : 14
+Clients :
+Le réseau prend en charge quatre clients différents, identifiés comme C, D, CE1, et CE2.
+
+#Connexions client-routeur :
+CE1 et CEN1 : CE1 est connecté à CEN1.
+CE2 et CEN2 : CE2 est connecté à CEN2.*
+
+#Communication entre clients :
+C et D : C et D peuvent communiquer entre eux.
+C et CE1/CE2 : C peut communiquer avec CE1 et CE2.
+D et CE1/CE2 : D peut communiquer avec CE1 et CE2.
+
+#Fonctionnalités supplémentaires :
+
+Route reflector : Les routeurs P3 et P4 agissent en tant que route reflectors et sont configurés pour une communication en full mesh avec tous les routeurs PE du réseau. Cela permet de transmettre efficacement les routes VPN à travers le réseau.
+
 ## Notes Supplémentaires
 
 - L'automatisation de la configuration et du déploiement est cruciale pour ce projet. Les scripts Python fournis facilitent grandement ce processus.
