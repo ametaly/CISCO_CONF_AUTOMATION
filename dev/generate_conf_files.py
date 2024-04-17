@@ -318,5 +318,6 @@ def generate_config_files(intent_file_path):
             config_file.write(config)
         print(f"Configuration for {router['name']} written to {config_filename}")
 
-intent_file_path = 'dev/network_intent_v2.json' 
+
+intent_file_path = 'dev/network_intent_v2.json'
 generate_config_files(intent_file_path)
